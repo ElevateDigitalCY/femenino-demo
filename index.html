@@ -34,10 +34,8 @@ nav{
 nav.scrolled{background:rgba(253,250,247,0.92);backdrop-filter:blur(16px);padding:14px 56px;box-shadow:0 1px 0 var(--border);}
 .nav-logo-wrap{display:flex;align-items:center;gap:12px;text-decoration:none;}
 .nav-logo-circle{
-  width:42px;height:42px;border-radius:50%;background:var(--text);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  width:54px;height:54px;flex-shrink:0;
 }
-.nav-logo-circle span{font-family:'Cormorant Garamond',serif;font-size:11px;font-weight:500;letter-spacing:.05em;color:var(--bg);text-align:center;line-height:1.2;}
 .nav-brand{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text);}
 .nav-links{display:flex;gap:32px;list-style:none;}
 .nav-links a{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;}
@@ -277,8 +275,11 @@ footer{background:var(--text);padding:64px 56px 40px;}
 <!-- NAV -->
 <nav id="nav">
   <a href="#" class="nav-logo-wrap">
-    <div class="nav-logo-circle"><span>FEM<br>ENI<br>NO</span></div>
-    <span class="nav-brand">Femenino Boutique</span>
+    <svg class="nav-logo-circle" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="27" cy="27" r="26" fill="#EDE8DF" stroke="#1C1612" stroke-width="0.8"/>
+      <text x="27" y="23" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="9.5" font-weight="400" fill="#1C1612" letter-spacing="0.4">Femenino</text>
+      <text x="27" y="35" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="9.5" font-weight="400" fill="#1C1612" letter-spacing="0.4">Boutique</text>
+    </svg>
   </a>
   <ul class="nav-links">
     <li><a href="#new-in">New In</a></li>
