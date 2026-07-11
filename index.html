@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Femenino Boutique — Online Fashion Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{
+  --bg:     #FDFAF7;
+  --bg2:    #F5EFE8;
+  --bg3:    #EDE4D8;
+  --text:   #1C1612;
+  --muted:  rgba(28,22,18,0.45);
+  --accent: #C47A6E;
+  --rose:   #E8AFA4;
+  --warm:   #D4A882;
+  --green:  #7A9B7A;
+  --border: rgba(28,22,18,0.09);
+  --border2:rgba(28,22,18,0.05);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 56px;
+  transition:background .4s,backdrop-filter .4s,padding .3s,box-shadow .3s;
+}
+nav.scrolled{background:rgba(253,250,247,0.92);backdrop-filter:blur(16px);padding:14px 56px;box-shadow:0 1px 0 var(--border);}
+.nav-logo-wrap{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo-circle{
+  width:42px;height:42px;border-radius:50%;background:var(--text);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.nav-logo-circle span{font-family:'Cormorant Garamond',serif;font-size:11px;font-weight:500;letter-spacing:.05em;color:var(--bg);text-align:center;line-height:1.2;}
+.nav-brand{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text);}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--text);}
+.nav-right{display:flex;align-items:center;gap:20px;}
+.nav-ig{
+  font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--accent);border:1px solid var(--accent);padding:9px 20px;
+  text-decoration:none;transition:background .2s,color .2s;
+}
+.nav-ig:hover{background:var(--accent);color:#fff;}
+
+/* HERO */
+.hero{
+  min-height:100vh;display:grid;grid-template-columns:1fr 1fr;
+  padding-top:80px;
+}
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:80px 56px 80px 56px;
+  background:var(--bg);
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:9px;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:32px;
+}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--accent);}
+.hero-headline{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(52px,6vw,88px);font-weight:300;line-height:.95;
+  letter-spacing:-.01em;color:var(--text);margin-bottom:28px;
+}
+.hero-headline em{font-style:italic;color:var(--accent);}
+.hero-sub{
+  font-size:13px;line-height:1.95;color:var(--muted);
+  max-width:340px;margin-bottom:44px;letter-spacing:.02em;
+}
+.hero-actions{display:flex;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:56px;}
+.btn-dark{
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  background:var(--text);color:var(--bg);padding:14px 32px;
+  text-decoration:none;transition:background .25s;display:inline-block;
+  align-self:flex-start;
+}
+.btn-dark:hover{background:var(--accent);}
+.btn-outline{
+  font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--muted);text-decoration:none;
+  border-bottom:1px solid var(--border);padding-bottom:3px;
+  transition:color .2s,border-color .2s;
+}
+.btn-outline:hover{color:var(--text);border-color:var(--text);}
+.hero-stats{display:flex;gap:40px;}
+.hero-stat-n{font-family:'Cormorant Garamond',serif;font-size:36px;font-weight:300;color:var(--text);line-height:1;}
+.hero-stat-l{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:4px;}
+
+.hero-right{
+  position:relative;overflow:hidden;
+  display:grid;grid-template-columns:1fr 1fr;gap:3px;
+  background:var(--bg3);
+}
+.hero-right-img{position:relative;overflow:hidden;}
+.hero-right-img:first-child{grid-row:span 2;}
+.hero-right-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.22,.68,0,1);}
+.hero-right-img:hover img{transform:scale(1.04);}
+.hero-badge{
+  position:absolute;bottom:20px;left:20px;
+  background:rgba(253,250,247,.92);backdrop-filter:blur(8px);
+  padding:8px 14px;
+}
+.hero-badge span{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);}
+
+/* TICKER */
+.ticker{background:var(--text);padding:11px 0;overflow:hidden;display:flex;white-space:nowrap;}
+.ticker-track{display:flex;flex-shrink:0;animation:tick 24s linear infinite;}
+.tick-item{font-family:'Cormorant Garamond',serif;font-size:14px;font-style:italic;letter-spacing:.06em;color:var(--bg);padding:0 28px;}
+.tick-sep{color:rgba(253,250,247,.3);padding:0 4px;}
+@keyframes tick{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* SECTION BASE */
+.sec{padding:96px 56px;}
+.sec-label{font-size:9px;letter-spacing:.32em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,52px);font-weight:300;color:var(--text);margin-bottom:48px;line-height:1.1;}
+.sec-header{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;}
+.link-arrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .2s;display:flex;align-items:center;gap:8px;}
+.link-arrow::after{content:'→';transition:transform .2s;}
+.link-arrow:hover{color:var(--text);}
+.link-arrow:hover::after{transform:translateX(4px);}
+
+/* PRODUCTS */
+.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.product-card{cursor:pointer;}
+.product-img-wrap{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--bg2);margin-bottom:14px;}
+.product-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.22,.68,0,1.1);}
+.product-card:hover .product-img-wrap img{transform:scale(1.05);}
+.product-overlay{
+  position:absolute;inset:0;background:rgba(28,22,18,.42);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .3s;
+}
+.product-card:hover .product-overlay{opacity:1;}
+.product-overlay span{
+  font-size:9px;letter-spacing:.22em;text-transform:uppercase;
+  color:#fff;border:1px solid rgba(255,255,255,.6);padding:10px 20px;
+}
+.product-tag{
+  position:absolute;top:14px;left:14px;
+  font-size:8px;letter-spacing:.18em;text-transform:uppercase;
+  background:var(--accent);color:#fff;padding:4px 10px;
+}
+.product-brand{font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;}
+.product-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;color:var(--text);margin-bottom:4px;line-height:1.2;}
+.product-price{font-size:13px;color:var(--accent);letter-spacing:.04em;}
+
+/* BRANDS */
+.brands-sec{background:var(--bg2);}
+.brands-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);}
+.brand-card{
+  background:var(--bg2);padding:40px 32px;text-align:center;
+  transition:background .3s;cursor:pointer;
+}
+.brand-card:hover{background:var(--bg);}
+.brand-name{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;letter-spacing:.1em;color:var(--text);margin-bottom:8px;}
+.brand-count{font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);}
+
+/* CATEGORIES */
+.cat-sec{background:var(--bg);}
+.cat-grid{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:auto auto;gap:3px;}
+.cat-item{position:relative;overflow:hidden;cursor:pointer;}
+.cat-item.large{grid-row:span 2;aspect-ratio:auto;}
+.cat-item:not(.large){aspect-ratio:4/3;}
+.cat-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.22,.68,0,1);}
+.cat-item:hover img{transform:scale(1.06);}
+.cat-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 50%,rgba(28,22,18,.75) 100%);
+  padding:28px;display:flex;flex-direction:column;justify-content:flex-end;
+}
+.cat-label{font-size:8px;letter-spacing:.28em;text-transform:uppercase;color:var(--rose);margin-bottom:6px;}
+.cat-name{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:#fff;line-height:1.1;margin-bottom:14px;}
+.cat-cta{font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.65);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25);padding-bottom:2px;transition:color .2s;}
+.cat-item:hover .cat-cta{color:#fff;}
+
+/* ABOUT */
+.about-sec{
+  background:var(--bg2);display:grid;grid-template-columns:1fr 1fr;
+  gap:0;min-height:560px;
+}
+.about-img{overflow:hidden;position:relative;}
+.about-img img{width:100%;height:100%;object-fit:cover;}
+.about-img::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,var(--bg2) 100%);}
+.about-content{padding:80px 64px;display:flex;flex-direction:column;justify-content:center;}
+.about-quote{
+  font-family:'Cormorant Garamond',serif;font-size:clamp(22px,2.5vw,34px);
+  font-weight:300;font-style:italic;color:var(--text);line-height:1.5;
+  margin-bottom:28px;
+}
+.about-body{font-size:13px;line-height:1.95;color:var(--muted);margin-bottom:36px;max-width:400px;}
+.about-detail{display:flex;gap:32px;margin-bottom:40px;}
+.about-d{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);}
+
+/* INSTAGRAM */
+.ig-sec{background:var(--bg);padding:80px 56px;}
+.ig-top{text-align:center;margin-bottom:48px;}
+.ig-handle{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,52px);font-style:italic;color:var(--text);}
+.ig-desc{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:10px;}
+.ig-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;}
+.ig-item{position:relative;aspect-ratio:1;overflow:hidden;cursor:pointer;background:var(--bg2);}
+.ig-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease,filter .5s ease;}
+.ig-item:hover img{transform:scale(1.07);filter:brightness(.72);}
+.ig-hover{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s;}
+.ig-item:hover .ig-hover{opacity:1;}
+.ig-cta{margin-top:40px;text-align:center;}
+
+/* SHIPPING BANNER */
+.ship-banner{background:var(--accent);padding:18px 56px;display:flex;justify-content:center;gap:64px;flex-wrap:wrap;}
+.ship-item{display:flex;align-items:center;gap:10px;}
+.ship-item svg{width:16px;height:16px;color:#fff;flex-shrink:0;}
+.ship-text{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#fff;}
+
+/* FOOTER */
+footer{background:var(--text);padding:64px 56px 40px;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+.foot-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--bg);margin-bottom:14px;}
+.foot-desc{font-size:12px;line-height:1.9;color:rgba(253,250,247,.45);margin-bottom:28px;max-width:240px;}
+.foot-socs{display:flex;gap:10px;}
+.foot-soc{width:34px;height:34px;border:1px solid rgba(253,250,247,.12);display:flex;align-items:center;justify-content:center;transition:border-color .2s,background .2s;text-decoration:none;}
+.foot-soc:hover{border-color:var(--rose);background:rgba(232,175,164,.08);}
+.foot-soc svg{width:13px;height:13px;color:rgba(253,250,247,.5);}
+.foot-col h5{font-size:9px;letter-spacing:.28em;text-transform:uppercase;color:var(--rose);margin-bottom:18px;}
+.foot-col ul{list-style:none;}
+.foot-col li{margin-bottom:10px;}
+.foot-col a{font-size:12px;color:rgba(253,250,247,.4);text-decoration:none;transition:color .2s;letter-spacing:.04em;}
+.foot-col a:hover{color:var(--bg);}
+.foot-bottom{border-top:1px solid rgba(253,250,247,.07);padding-top:24px;display:flex;justify-content:space-between;}
+.foot-copy{font-size:10px;color:rgba(253,250,247,.25);letter-spacing:.06em;}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  nav{padding:18px 24px;}
+  nav.scrolled{padding:12px 24px;}
+  .hero{grid-template-columns:1fr;min-height:auto;}
+  .hero-left{padding:120px 32px 64px;}
+  .hero-right{height:70vw;grid-template-columns:1fr 1fr;}
+  .products-grid{grid-template-columns:repeat(2,1fr);}
+  .brands-grid{grid-template-columns:repeat(2,1fr);}
+  .cat-grid{grid-template-columns:1fr 1fr;}
+  .cat-item.large{grid-row:span 1;aspect-ratio:4/3;}
+  .about-sec{grid-template-columns:1fr;}
+  .about-img{height:360px;}
+  .about-img::after{display:none;}
+  .about-content{padding:56px 32px;}
+  .ig-grid{grid-template-columns:repeat(3,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px;}
+  .sec{padding:72px 32px;}
+  .ig-sec{padding:72px 32px;}
+  .ship-banner{padding:18px 32px;gap:28px;}
+  footer{padding:48px 32px 32px;}
+}
+@media(max-width:640px){
+  .nav-links{display:none;}
+  .products-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .ig-grid{grid-template-columns:repeat(3,1fr);}
+  .footer-grid{grid-template-columns:1fr;}
+  .hero-stats{gap:24px;}
+  .ship-banner{gap:16px;}
+}
+
+/* ANIMATIONS */
+.fade{opacity:0;transform:translateY(20px);transition:opacity .65s ease,transform .65s ease;}
+.fade.in{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo-wrap">
+    <div class="nav-logo-circle"><span>FEM<br>ENI<br>NO</span></div>
+    <span class="nav-brand">Femenino Boutique</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#new-in">New In</a></li>
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#brands">Brands</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://www.instagram.com/femeninoboutique_/" target="_blank" class="nav-ig">Order via DM</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow fade">New Arrivals — Summer 2026</p>
+    <h1 class="hero-headline fade">Your Style.<br>Your <em>Story</em>.</h1>
+    <p class="hero-sub fade">Curated fashion for the modern woman. Shop the latest dresses, co-ords, and pieces — shipping across Cyprus and Greece.</p>
+    <div class="hero-actions fade">
+      <a href="#new-in" class="btn-dark">Shop New In</a>
+      <a href="https://www.instagram.com/femeninoboutique_/" target="_blank" class="btn-outline">Order on Instagram →</a>
+    </div>
+    <div class="hero-stats fade">
+      <div><div class="hero-stat-n">13.7K</div><div class="hero-stat-l">Followers</div></div>
+      <div><div class="hero-stat-n">1,400+</div><div class="hero-stat-l">Posts</div></div>
+      <div><div class="hero-stat-n">2+</div><div class="hero-stat-l">Countries</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-img">
+      <img src="https://picsum.photos/seed/fem-h1/600/1000" alt=""/>
+      <div class="hero-badge"><span>New In — Dresses</span></div>
+    </div>
+    <div class="hero-right-img"><img src="https://picsum.photos/seed/fem-h2/600/500" alt=""/></div>
+    <div class="hero-right-img"><img src="https://picsum.photos/seed/fem-h3/600/500" alt=""/></div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="tick-item">New Arrivals</span><span class="tick-sep">·</span>
+    <span class="tick-item">Sorena</span><span class="tick-sep">·</span>
+    <span class="tick-item">Eveleya</span><span class="tick-sep">·</span>
+    <span class="tick-item">IRA</span><span class="tick-sep">·</span>
+    <span class="tick-item">Free Shipping in Cyprus</span><span class="tick-sep">·</span>
+    <span class="tick-item">Order via DM</span><span class="tick-sep">·</span>
+    <span class="tick-item">Shipping to Greece</span><span class="tick-sep">·</span>
+    <span class="tick-item">Summer 2026</span><span class="tick-sep">·</span>
+    <span class="tick-item">New Arrivals</span><span class="tick-sep">·</span>
+    <span class="tick-item">Sorena</span><span class="tick-sep">·</span>
+    <span class="tick-item">Eveleya</span><span class="tick-sep">·</span>
+    <span class="tick-item">IRA</span><span class="tick-sep">·</span>
+    <span class="tick-item">Free Shipping in Cyprus</span><span class="tick-sep">·</span>
+    <span class="tick-item">Order via DM</span><span class="tick-sep">·</span>
+    <span class="tick-item">Shipping to Greece</span><span class="tick-sep">·</span>
+    <span class="tick-item">Summer 2026</span><span class="tick-sep">·</span>
+  </div>
+</div>
+
+<!-- SHIPPING BANNER -->
+<div class="ship-banner">
+  <div class="ship-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    <span class="ship-text">Free shipping Cyprus · Orders over €50</span>
+  </div>
+  <div class="ship-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7H4a2 2 0 00-2 2v6a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+    <span class="ship-text">Shipping to Greece</span>
+  </div>
+  <div class="ship-item">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    <span class="ship-text">Order via Instagram DM</span>
+  </div>
+</div>
+
+<!-- NEW IN -->
+<section class="sec" id="new-in">
+  <div class="sec-header fade">
+    <div>
+      <p class="sec-label">Just Landed</p>
+      <h2 class="sec-title" style="margin-bottom:0;">New In</h2>
+    </div>
+    <a href="https://www.instagram.com/femeninoboutique_/" target="_blank" class="link-arrow">View All Pieces</a>
+  </div>
+  <div class="products-grid">
+    <div class="product-card fade">
+      <div class="product-img-wrap">
+        <img src="https://picsum.photos/seed/p1/500/700" alt=""/>
+        <div class="product-tag">New</div>
+        <div class="product-overlay"><span>View & Order</span></div>
+      </div>
+      <p class="product-brand">Eveleya</p>
+      <p class="product-name">Floral Maxi Dress</p>
+      <p class="product-price">€89</p>
+    </div>
+    <div class="product-card fade">
+      <div class="product-img-wrap">
+        <img src="https://picsum.photos/seed/p2/500/700" alt=""/>
+        <div class="product-overlay"><span>View & Order</span></div>
+      </div>
+      <p class="product-brand">Sorena</p>
+      <p class="product-name">Ruched Co-ord Set</p>
+      <p class="product-price">€115</p>
+    </div>
+    <div class="product-card fade">
+      <div class="product-img-wrap">
+        <img src="https://picsum.photos/seed/p3/500/700" alt=""/>
+        <div class="product-tag">Best Seller</div>
+        <div class="product-overlay"><span>View & Order</span></div>
+      </div>
+      <p class="product-brand">IRA</p>
+      <p class="product-name">Wrap Midi Dress</p>
+      <p class="product-price">€74</p>
+    </div>
+    <div class="product-card fade">
+      <div class="product-img-wrap">
+        <img src="https://picsum.photos/seed/p4/500/700" alt=""/>
+        <div class="product-overlay"><span>View & Order</span></div>
+      </div>
+      <p class="product-brand">Sorena</p>
+      <p class="product-name">Cut-Out Bodycon</p>
+      <p class="product-price">€92</p>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section class="cat-sec sec" id="collections">
+  <div class="sec-header fade">
+    <div>
+      <p class="sec-label">Browse by Style</p>
+      <h2 class="sec-title" style="margin-bottom:0;">Collections</h2>
+    </div>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-item large fade">
+      <img src="https://picsum.photos/seed/cat1/800/1200" alt="Dresses"/>
+      <div class="cat-overlay">
+        <p class="cat-label">Summer 2026</p>
+        <h3 class="cat-name">Dresses &<br>Maxi Gowns</h3>
+        <a href="https://www.instagram.com/femeninoboutique_/" target="_blank" class="cat-cta">Shop Now →</a>
+      </div>
+    </div>
+    <div class="cat-item fade">
+      <img src="https://picsum.photos/seed/cat2/700/500" alt="Co-ords"/>
+      <div class="cat-overlay">
+        <p class="cat-label">Matching Sets</p>
+        <h3 class="cat-name">Co-ord Sets</h3>
+        <a href="https://www.instagram.com/femeninoboutique_/" target="_blank" class="cat-cta">Shop Now →</a>
+      </div>
+    </div>
+    <div class="cat-item fade">
+      <img src="https://picsum.photos/seed/cat3/700/500" alt="Tops"/>
+      <div class="cat-overlay">
+        <p class="cat-label">New Arrivals</p>
+        <h3 class="cat-name">Tops &<br>Blouses</h3>
+        <a href="https://www.instagram.com/femeninoboutique_/" target="_blank" class="cat-cta">Shop Now →</a>
+      </div>
+    </div>
+    <div class="cat-item fade">
+      <img src="https://picsum.photos/seed/cat4/700/500" alt="Evening"/>
+      <div class="cat-overlay">
+        <p class="cat-label">Going Out</p>
+        <h3 class="cat-name">Evening &<br>Party</h3>
+        <a href="https://www.instagram.com/femeninoboutique_/" target="_blank" class="cat-cta">Shop Now →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section class="brands-sec sec" id="brands">
+  <div class="fade" style="margin-bottom:48px;">
+    <p class="sec-label">Our Designers</p>
+    <h2 class="sec-title" style="margin-bottom:0;">Brands We Carry</h2>
+  </div>
+  <div class="brands-grid">
+    <div class="brand-card fade">
+      <div class="brand-name">Sorena</div>
+      <div class="brand-count">View Collection →</div>
+    </div>
+    <div class="brand-card fade">
+      <div class="brand-name">Eveleya</div>
+      <div class="brand-count">View Collection →</div>
+    </div>
+    <div class="brand-card fade">
+      <div class="brand-name">IRA</div>
+      <div class="brand-count">View Collection →</div>
+    </div>
+    <div class="brand-card fade">
+      <div class="brand-name">Say No More</div>
+      <div class="brand-count">View Collection →</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-sec" id="about">
+  <div class="about-img">
+    <img src="https://picsum.photos/seed/about1/800/600" alt="Femenino Boutique"/>
+  </div>
+  <div class="about-content">
+    <p class="sec-label fade">Our Story</p>
+    <blockquote class="about-quote fade">"Every woman deserves to feel beautiful in what she wears."</blockquote>
+    <p class="about-body fade">Femenino Boutique is an online fashion store dedicated to curating the best in contemporary women's fashion. We hand-pick every piece from top designers — bringing quality, style, and femininity directly to your door across Cyprus and Greece.</p>
+    <div class="about-detail fade">
+      <span class="about-d">🇨🇾 Nicosia, Cyprus</span>
+      <span class="about-d">Ships to Cyprus & Greece</span>
+    </div>
+    <a href="https://www.instagram.com/femeninoboutique_/" target="_blank" class="btn-dark fade">Shop on Instagram</a>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="ig-sec">
+  <div class="ig-top fade">
+    <h2 class="ig-handle">@femeninoboutique_</h2>
+    <p class="ig-desc">Follow for new arrivals · Styling ideas · Customer looks</p>
+  </div>
+  <div class="ig-grid">
+    <div class="ig-item"><img src="https://picsum.photos/seed/ig1/400/400" alt=""/><div class="ig-hover"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg></div></div>
+    <div class="ig-item"><img src="https://picsum.photos/seed/ig2/400/400" alt=""/><div class="ig-hover"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg></div></div>
+    <div class="ig-item"><img src="https://picsum.photos/seed/ig3/400/400" alt=""/><div class="ig-hover"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg></div></div>
+    <div class="ig-item"><img src="https://picsum.photos/seed/ig4/400/400" alt=""/><div class="ig-hover"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg></div></div>
+    <div class="ig-item"><img src="https://picsum.photos/seed/ig5/400/400" alt=""/><div class="ig-hover"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg></div></div>
+    <div class="ig-item"><img src="https://picsum.photos/seed/ig6/400/400" alt=""/><div class="ig-hover"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="white" stroke="none"/></svg></div></div>
+  </div>
+  <div class="ig-cta fade">
+    <a href="https://www.instagram.com/femeninoboutique_/" target="_blank" class="btn-dark">Follow @femeninoboutique_</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div>
+      <div class="foot-logo">Femenino</div>
+      <p class="foot-desc">Curated fashion for the modern woman. Shipping to Cyprus and Greece.</p>
+      <div class="foot-socs">
+        <a href="https://www.instagram.com/femeninoboutique_/" target="_blank" class="foot-soc" title="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.facebook.com/femeninoboutique" target="_blank" class="foot-soc" title="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@femeninoboutique_" target="_blank" class="foot-soc" title="TikTok">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.75a4.85 4.85 0 01-1.01-.06z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h5>Shop</h5>
+      <ul>
+        <li><a href="#">New In</a></li>
+        <li><a href="#">Dresses</a></li>
+        <li><a href="#">Co-ord Sets</a></li>
+        <li><a href="#">Tops & Blouses</a></li>
+        <li><a href="#">Evening Wear</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Brands</h5>
+      <ul>
+        <li><a href="#">Sorena</a></li>
+        <li><a href="#">Eveleya</a></li>
+        <li><a href="#">IRA</a></li>
+        <li><a href="#">Say No More</a></li>
+      </ul>
+    </div>
+    <div class="foot-col">
+      <h5>Help</h5>
+      <ul>
+        <li><a href="#">How to Order</a></li>
+        <li><a href="#">Shipping Info</a></li>
+        <li><a href="#">Returns</a></li>
+        <li><a href="https://www.instagram.com/femeninoboutique_/" target="_blank">Contact via DM</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p class="foot-copy">© 2026 Femenino Boutique. All rights reserved.</p>
+    <p class="foot-copy">Cyprus & Greece</p>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);
+});
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});
+},{threshold:0.05,rootMargin:'0px 0px 80px 0px'});
+document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
+setTimeout(()=>{
+  document.querySelectorAll('.hero .fade').forEach((el,i)=>setTimeout(()=>el.classList.add('in'),150+i*130));
+},80);
+// Fallback: ensure all elements become visible (handles screenshots + slow connections)
+setTimeout(()=>document.querySelectorAll('.fade').forEach(el=>el.classList.add('in')),1800);
+</script>
+</body>
+</html>
